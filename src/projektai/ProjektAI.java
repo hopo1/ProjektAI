@@ -4,13 +4,12 @@
  * and open the template in the editor.
  */
 package projektai;
-
 /**
  *
  * @author david_5i3asud
  */
 public class ProjektAI {
-    
+ 
 
     /**
      * @param args the command line arguments
