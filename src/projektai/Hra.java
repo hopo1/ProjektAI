@@ -15,13 +15,13 @@ public class Hra {
     public ArrayList<Hrac> hraci=new ArrayList<>();
     ArrayList<Karta> odhBalicek=new ArrayList<>();
     public Hra(int pocet){
-        boolean vyhra=false;
+        int f=1;
         int i=-1;
         Zacatek z=new Zacatek(balicek,hraci,pocet);
-        while(!vyhra){
+        while(f!=0){
             i++;
             if(i==hraci.size()){i=0;}
-            hraci.get(i).hraj(balicek, odhBalicek);
+            f=hraci.get(i).hraj(balicek, odhBalicek);
         }
     }
 }

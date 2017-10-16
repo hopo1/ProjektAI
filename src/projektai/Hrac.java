@@ -12,15 +12,16 @@ import java.util.ArrayList;
  * @author david_5i3asud
  */
 public class Hrac {
-    private ArrayList<Karta> ruka;
+    private ArrayList<Karta> ruka=new ArrayList<>();
     Komunikace k=new Komunikace();
     public Hrac(ArrayList<Karta> balicek){
-        for(int i=0;i<7;i++){
+        for(int i=0;i<5;i++){
             lizniSi(balicek);
         }
     }
     
     public int hraj(ArrayList<Karta> balicek,ArrayList<Karta> odhBalicek){
+        System.out.println(zprava());
         int vyber=k.getI();
         if(vyber<ruka.size()){
             zahraj(vyber,odhBalicek);}
@@ -49,5 +50,14 @@ public class Hrac {
     }
     private int pocetKaret(){
         return ruka.size();
+    }
+
+    private String zprava() {
+        System.out.println("Zahraj kartu (Napis jeji cislo)\nPokud si chces liznout napis libovolne vysi cislo");
+        String s="";
+        for(int i=0;i<ruka.size();i++){
+            s+="Cislo karty: "+i+" "+ruka.get(i)+"\n";
+        }
+        return s;
     }
 }

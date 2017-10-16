@@ -78,4 +78,9 @@ public class Karta {
     public void setPoradi(int poradi) {
         this.poradi = poradi;
     }
+    @Override
+    public String toString(){
+        String s=typS+" "+barvaS;
+        return s;
+    }
 }

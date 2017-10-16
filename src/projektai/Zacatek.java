@@ -14,7 +14,7 @@ import java.util.Random;
  *
  * @author david_5i3asud
  */
-public class Zacatek {
+public final class Zacatek {
     Random r=new Random();
     public ArrayList<Karta> balicek;
     
@@ -22,7 +22,7 @@ public class Zacatek {
         this.balicek=balicek;
         vyrobB();
         michej();
-        vyrobH(pocet);
+        vyrobH(pocet,hraci);
     }
 
     /**
@@ -53,10 +53,10 @@ public class Zacatek {
             }  
     });
     }
-    public ArrayList<Hrac> vyrobH(int pocet){
-      ArrayList<Hrac>  hraci=new ArrayList<>();
+    public ArrayList<Hrac> vyrobH(int pocet, ArrayList<Hrac> hraci){
       for(int i=0;i<pocet;i++){
           Hrac h=new Hrac(balicek);
+          hraci.add(h);
       }
       return hraci;
     }

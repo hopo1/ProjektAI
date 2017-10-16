@@ -20,4 +20,15 @@ public class Komunikace {
     public String getS(){
         return scS.nextLine();
     }
+    public int moznosti(){
+        System.out.println("Ahoj\npokud chces hrat hru stiskni 1\npokud chces ukoncit hru stiskni jine cislo");
+        return scI.nextInt();
+    }
+    public int pocetH(){
+        int i=6;
+        while(i>5||i<2){
+        System.out.println("Vzber pocet hracu (max 5)");
+        i=getI();}
+        return i;
+    }
 }

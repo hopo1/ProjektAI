@@ -16,6 +16,14 @@ public class ProjektAI {
      */
     public static void main(String[] args) {
         Komunikace k=new Komunikace();
+        int moznost = k.moznosti();
+        while(moznost==1){
+            int hracu;
+            hracu = k.pocetH();
+            Hra h=new Hra(hracu);
+            moznost=k.moznosti();
+        }
+        System.out.println("Diky za hru :)");
     }
     
 }
