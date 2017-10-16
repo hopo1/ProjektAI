@@ -6,14 +6,11 @@
 package projektai;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 /**
  *
  * @author david_5i3asud
  */
 public class Hra {
-    private Scanner scS=new Scanner(System.in);
-    private Scanner scI=new Scanner(System.in);
     public ArrayList<Karta> balicek=new ArrayList<>();
     public ArrayList<Hrac> hraci=new ArrayList<>();
     ArrayList<Karta> odhBalicek=new ArrayList<>();
@@ -24,13 +21,7 @@ public class Hra {
         while(!vyhra){
             i++;
             if(i==hraci.size()){i=0;}
-            hraci.get(i).hraj(pocet, balicek, odhBalicek);
+            hraci.get(i).hraj(balicek, odhBalicek);
         }
-    }
-    private int zjistiI(){
-        return scI.nextInt();
-    }
-    private String zjistiS(){
-        return scS.nextLine();
     }
 }

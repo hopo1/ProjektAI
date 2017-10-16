@@ -13,13 +13,15 @@ import java.util.ArrayList;
  */
 public class Hrac {
     private ArrayList<Karta> ruka;
+    Komunikace k=new Komunikace();
     public Hrac(ArrayList<Karta> balicek){
         for(int i=0;i<7;i++){
             lizniSi(balicek);
         }
     }
     
-    public int hraj(int vyber,ArrayList<Karta> balicek,ArrayList<Karta> odhBalicek){
+    public int hraj(ArrayList<Karta> balicek,ArrayList<Karta> odhBalicek){
+        int vyber=k.getI();
         if(vyber<ruka.size()){
             zahraj(vyber,odhBalicek);}
         else{
