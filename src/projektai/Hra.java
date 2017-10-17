@@ -13,15 +13,17 @@ import java.util.ArrayList;
 public class Hra {
     public ArrayList<Karta> balicek=new ArrayList<>();
     public ArrayList<Hrac> hraci=new ArrayList<>();
-    ArrayList<Karta> odhBalicek=new ArrayList<>();
+    public ArrayList<Karta> odhBalicek=new ArrayList<>();
+    public int f;
+    public int[] dalsiKarta=new int[3];
     public Hra(int pocet){
-        int f=1;
+        f=1;
         int i=-1;
-        Zacatek z=new Zacatek(balicek,hraci,pocet);
+        Zacatek z=new Zacatek(balicek,hraci,pocet,odhBalicek,dalsiKarta);
         while(f!=0){
             i++;
             if(i==hraci.size()){i=0;}
-            f=hraci.get(i).hraj(balicek, odhBalicek);
+            f=hraci.get(i).hraj(balicek, odhBalicek,dalsiKarta,i);
         }
     }
 }

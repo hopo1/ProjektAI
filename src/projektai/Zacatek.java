@@ -18,11 +18,36 @@ public final class Zacatek {
     Random r=new Random();
     public ArrayList<Karta> balicek;
     
-    public Zacatek(ArrayList<Karta> balicek,ArrayList<Hrac> hraci,int pocet){
+    public Zacatek(ArrayList<Karta> balicek,ArrayList<Hrac> hraci,int pocet,ArrayList<Karta> odhBalicek,int[] dalsiKarta){
         this.balicek=balicek;
         vyrobB();
         michej();
         vyrobH(pocet,hraci);
+        prvniKarta(odhBalicek,dalsiKarta);
+    }
+    private void prvniKarta(ArrayList<Karta> odhBalicek,int[] dalsiKarta){
+        odhBalicek.add(balicek.get(0));
+        dalsiKarta[1]=odhBalicek.get(0).getTyp();
+        switch (odhBalicek.get(0).getTyp()) {
+            case 0:
+                dalsiKarta[2]=3;
+                dalsiKarta[0]=-1;
+                break;
+            case 5:
+                dalsiKarta[2]=1;
+                dalsiKarta[0]=-1;
+                break;
+            case 7:
+                dalsiKarta[2]=2;
+                dalsiKarta[0]=-1;
+                break;
+            default:
+                dalsiKarta[2]=0;
+                dalsiKarta[0]=odhBalicek.get(0).getBarva();
+           
+        balicek.remove(0);
+        
+    }
     }
 
     /**

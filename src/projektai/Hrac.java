@@ -20,13 +20,36 @@ public class Hrac {
         }
     }
     
-    public int hraj(ArrayList<Karta> balicek,ArrayList<Karta> odhBalicek){
-        System.out.println(zprava());
+    public int hraj(ArrayList<Karta> balicek,ArrayList<Karta> odhBalicek,int[] dalsiKarta,int o){
+        System.out.println(zprava(odhBalicek,o));
         int vyber=k.getI();
         if(vyber<ruka.size()){
-            zahraj(vyber,odhBalicek);}
-        else{
-            lizniSi(balicek);}
+            if(pravidla(vyber,odhBalicek,dalsiKarta)){
+            zahraj(vyber,odhBalicek,dalsiKarta);
+            }
+            else hraj(balicek,odhBalicek,dalsiKarta,o);
+        
+        }
+        else {
+            switch(dalsiKarta[2]){
+                case 0:
+                    lizniSi(balicek);
+                    
+                 break;
+                case 1:
+                    svrsek(dalsiKarta);
+                 break;
+                case 2:
+                    dalsiKarta[0]=odhBalicek.get(odhBalicek.size()-1).getBarva();
+                 break;
+                default:
+                    for(int i=0;i<((dalsiKarta[2]-2)*2);i++){
+                        lizniSi(balicek);
+                    }
+                    dalsiKarta[0]=odhBalicek.get(odhBalicek.size()-1).getBarva();
+            }
+            dalsiKarta[2]=0;
+        }
         return pocetKaret();
     
     }
@@ -38,26 +61,70 @@ public class Hrac {
         ruka.add(balicek.get(0));        
         balicek.remove(0);
     }
+    private void specEfekt(Karta karta,int[] dalsiKarta){
+        dalsiKarta[1]=karta.getTyp();
+        switch (karta.getTyp()) {
+            case 0:
+                if(dalsiKarta[2]==3)dalsiKarta[2]+=1;
+                else dalsiKarta[2]=3;
+                dalsiKarta[0]=-1;
+                break;
+            case 5:
+                svrsek(dalsiKarta);
+                break;
+            case 7:
+                dalsiKarta[2]=2;
+                dalsiKarta[0]=-1;
+                break;
+            default:
+                dalsiKarta[2]=0;
+                dalsiKarta[0]=karta.getBarva();
+                break;
+        }
+        System.err.println("specEfekt");
+    }
 
     /**
      * Hrac zahraje kartu s indexem i ze sve ruky
      * @param i pozice karty na ruce
      * @param odhBalicek odhayovaci balicek
      */
-    private void zahraj(int i,ArrayList<Karta> odhBalicek){
+    private void zahraj(int i,ArrayList<Karta> odhBalicek,int[] dalsiKarta){
         odhBalicek.add(ruka.get(i));
+        specEfekt(ruka.get(i),dalsiKarta);
         ruka.remove(i);
+    }
+    private boolean pravidla(int i,ArrayList<Karta> odhBalicek,int[] dalsiKarta){
+        boolean b=((ruka.get(i).getBarva()==dalsiKarta[0])||(ruka.get(i).getTyp()==dalsiKarta[1]));
+        if(b){
+            return true;
+        }
+        else{
+            System.out.println("Nelze zahrat");
+            return false;
+        }
     }
     private int pocetKaret(){
         return ruka.size();
     }
 
-    private String zprava() {
-        System.out.println("Zahraj kartu (Napis jeji cislo)\nPokud si chces liznout napis libovolne vysi cislo");
+    private String zprava(ArrayList<Karta> odhBalicek,int o) {
+        System.out.println("Hraje hrac ciso: "+o+"\nZahraj kartu (Napis jeji cislo)\nPokud si chces liznout napis libovolne vysi cislo\nhorni karta je: "+odhBalicek.get(odhBalicek.size()-1));
         String s="";
         for(int i=0;i<ruka.size();i++){
             s+="Cislo karty: "+i+" "+ruka.get(i)+"\n";
         }
         return s;
     }
+
+    private void svrsek(int[] dalsiKarta) {
+        System.out.println("Vyber cislo barvy");
+        String[] s={"Srdce","Listy","Kule","Žaludy"};
+        for(int i=0;i<4;i++){
+        System.out.println(i+" "+s[i]);}
+        dalsiKarta[2]=0;
+        dalsiKarta[1]=k.getI();
+        System.out.print("");
+        }
+    
 }

@@ -22,7 +22,7 @@ public class Karta {
        
    } 
     private void urciTyp(){
-       switch(typ){
+       switch(getTyp()){
            case 0:
                typS="Sedma";
               break;
@@ -50,7 +50,7 @@ public class Karta {
        }
    }
    private void urciBarva(){
-       switch(barva){
+       switch(getBarva()){
            case 0:
                barvaS="Srdce";
               break;
@@ -82,5 +82,19 @@ public class Karta {
     public String toString(){
         String s=typS+" "+barvaS;
         return s;
+    }
+
+    /**
+     * @return the typ
+     */
+    public int getTyp() {
+        return typ;
+    }
+
+    /**
+     * @return the barva
+     */
+    public int getBarva() {
+        return barva;
     }
 }
