@@ -37,16 +37,18 @@ public class Hrac {
                     
                  break;
                 case 1:
-                    svrsek(dalsiKarta);
+                    //svrsek(dalsiKarta);
+                    lizniSi(balicek);
                  break;
-                case 2:
+                case 2: //eso
                     dalsiKarta[0]=odhBalicek.get(odhBalicek.size()-1).getBarva();
                  break;
-                default:
+                default: //sedmicka
                     for(int i=0;i<((dalsiKarta[2]-2)*2);i++){
                         lizniSi(balicek);
                     }
                     dalsiKarta[0]=odhBalicek.get(odhBalicek.size()-1).getBarva();
+                    break;
             }
             dalsiKarta[2]=0;
         }
@@ -64,19 +66,19 @@ public class Hrac {
     private void specEfekt(Karta karta,int[] dalsiKarta){
         dalsiKarta[1]=karta.getTyp();
         switch (karta.getTyp()) {
-            case 0:
+            case 0: //sedmicka
                 if(dalsiKarta[2]==3)dalsiKarta[2]+=1;
                 else dalsiKarta[2]=3;
                 dalsiKarta[0]=-1;
                 break;
-            case 5:
+            case 5: //svrsek
                 svrsek(dalsiKarta);
                 break;
-            case 7:
+            case 7: //eso 
                 dalsiKarta[2]=2;
                 dalsiKarta[0]=-1;
                 break;
-            default:
+            default: //vsechny karty
                 dalsiKarta[2]=0;
                 dalsiKarta[0]=karta.getBarva();
                 break;
@@ -123,7 +125,7 @@ public class Hrac {
         for(int i=0;i<4;i++){
         System.out.println(i+" "+s[i]);}
         dalsiKarta[2]=0;
-        dalsiKarta[1]=k.getI();
+        dalsiKarta[0]=k.getI();
         System.out.print("");
         }
     
