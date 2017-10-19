@@ -16,11 +16,12 @@ public class Hra {
     public ArrayList<Karta> odhBalicek=new ArrayList<>();
     public int f;
     public int[] dalsiKarta=new int[3];
-    Zacatek z=new Zacatek(balicek,hraci,1,odhBalicek,dalsiKarta);
+    Zacatek z;
     public Hra(int pocet){
         f=1;
         int i=-1;
         Zacatek z=new Zacatek(balicek,hraci,pocet,odhBalicek,dalsiKarta);
+        this.z=z;
         while(f!=0){
             i++;
             if(i==hraci.size()){i=0;}
