@@ -4,6 +4,10 @@
  * and open the template in the editor.
  */
 package projektai;
+
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+
 /**
  *
  * @author david_5i3asud
@@ -14,9 +18,13 @@ public class Karta {
     private int barva;
     private String barvaS;
     private int poradi;
-   public Karta(int typ,int barva){
+    private Image img;
+    private ImageView imgv;
+   public Karta(int typ,int barva,Image img){
        this.typ=typ;
        this.barva=barva;
+       this.img=img;
+       this.imgv=new ImageView(img);
        urciBarva();
        urciTyp();
        
